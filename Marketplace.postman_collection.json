@@ -1,0 +1,517 @@
+{
+	"info": {
+		"_postman_id": "d8458d52-d35f-476f-8cd3-8b4c5dd483c8",
+		"name": "Marketplace",
+		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests a user can send?",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Ebay",
+			"item": [
+				{
+					"name": "Amazon::list-orders",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX3JvbGUiOiJBZG1pbiIsImlhdCI6MTYxNjU1ODMxOH0.vEBoeQHAh8geSfR1xLtwPerXaHdsUme6B6B5J42tlAs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-mws-selling-id",
+								"value": "ACRZT4AP19XUW",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "x-mws-auth-token",
+								"value": "amzn.mws.84bc6543-4cba-3ea8-e721-52add593292f",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "x-mws-developer-id",
+								"value": "782237157855",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "x-lwa-client-id",
+								"value": "amzn1.application-oa2-client.2283771e6ab945dcb60f37c88d99091d",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "x-lwa-client-secret",
+								"value": "13c47c9a971c240b0c2faa0c9293d90859de244168cef218b3357713b5bc0bd6",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "x-lwa-refresh-token",
+								"value": "Atzr|IwEBICHS7f00kd2xxvL18rIB4ZCYCggqnFvNK8cT5uppcLa_mABvn_gELv_FWZjg7RcFuvRp7fa1pERJm1oVALc6D-QMuzgX_r4gG5tk09HjfPiAeBMWNSLGfopHoU75Lcybsa2Hwpred-CMzMoibiqcuc3BrCYkzD5ov42o7X_6Dfrdr0Xq_e0bUJLStCoAhnl-ZPNZZwjhDcThIwTiq83VyHgBSzVYMEGoUCR94w4RBfZO9mYqi_8E_jp-5C5mrppbL86QkNsPJnfmWcBulWBIZgZMdIWwfMZWwtgeRrbh3J1xBJ6CCZ2RT6o5XKK3LWFpKzU",
+								"type": "text"
+							},
+							{
+								"key": "x-selling-partner-id",
+								"value": "A18U04Y8NA1PK3",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4050/amazon/order?MarketplaceIds=ATVPDKIKX0DER&CreatedAfter=2021-04-14T09:57:53.453Z",
+							"host": [
+								"localhost"
+							],
+							"port": "4050",
+							"path": [
+								"amazon",
+								"order"
+							],
+							"query": [
+								{
+									"key": "MarketplaceIds",
+									"value": "ATVPDKIKX0DER"
+								},
+								{
+									"key": "CreatedAfter",
+									"value": "2021-04-14T09:57:53.453Z"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ebay::get-offer-by-sku",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{marketplace-jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-ebay-client-id",
+								"value": "{{x-ebay-client-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-ebay-client-secret",
+								"value": "{{x-ebay-client-secret}}",
+								"type": "text"
+							},
+							{
+								"key": "x-ebay-env",
+								"value": "{{x-ebay-env}}",
+								"type": "text"
+							},
+							{
+								"key": "x-grant-type",
+								"value": "refresh_token",
+								"type": "text"
+							},
+							{
+								"key": "x-ebay-refresh-token",
+								"value": "{{x-ebay-refresh-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"format\": \"FIXED_PRICE\",\n    \"marketplaceId\": \"EBAY_US\",\n    \"sku\": \"foo124\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4050/ebay/inventory/offer?sku=foo124",
+							"host": [
+								"localhost"
+							],
+							"port": "4050",
+							"path": [
+								"ebay",
+								"inventory",
+								"offer"
+							],
+							"query": [
+								{
+									"key": "sku",
+									"value": "foo124"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ebay::publish-offer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{marketplace-jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-ebay-client-id",
+								"value": "{{x-ebay-client-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-ebay-client-secret",
+								"value": "{{x-ebay-client-secret}}",
+								"type": "text"
+							},
+							{
+								"key": "x-ebay-env",
+								"value": "{{x-ebay-env}}",
+								"type": "text"
+							},
+							{
+								"key": "x-grant-type",
+								"value": "refresh_token",
+								"type": "text"
+							},
+							{
+								"key": "x-ebay-refresh-token",
+								"value": "{{x-ebay-refresh-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"format\": \"FIXED_PRICE\",\n    \"marketplaceId\": \"EBAY_US\",\n    \"sku\": \"foo124\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4050/ebay/inventory/offer/149405134016/publish",
+							"host": [
+								"localhost"
+							],
+							"port": "4050",
+							"path": [
+								"ebay",
+								"inventory",
+								"offer",
+								"149405134016",
+								"publish"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ebay::list-inventory-items",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{marketplace-jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-ebay-client-id",
+								"value": "{{x-ebay-client-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-ebay-client-secret",
+								"value": "{{x-ebay-client-secret}}",
+								"type": "text"
+							},
+							{
+								"key": "x-ebay-env",
+								"value": "{{x-ebay-env}}",
+								"type": "text"
+							},
+							{
+								"key": "x-grant-type",
+								"value": "refresh_token",
+								"type": "text"
+							},
+							{
+								"key": "x-ebay-refresh-token",
+								"value": "{{x-ebay-refresh-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"location\": {\n       \"address\": {\n            \"addressLine1\" : \"1080 N Kraemer PL\",\n            \"addressLine2\" : \"\",\n            \"city\" : \"Anaheim\",\n            \"country\" : \"US\",\n            \"county\": \"Orange\",\n            \"postalCode\" : \"92806\",\n            \"stateOrProvince\" : \"California\"\n        }\n    },\n            \"name\": \"Anaheim\",\n        \"phone\": \"6572309544\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4050/ebay/inventory_item",
+							"host": [
+								"localhost"
+							],
+							"port": "4050",
+							"path": [
+								"ebay",
+								"inventory_item"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ebay::create-or-update-inventory-item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{marketplace-jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-ebay-client-id",
+								"value": "{{x-ebay-client-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-ebay-client-secret",
+								"value": "{{x-ebay-client-secret}}",
+								"type": "text"
+							},
+							{
+								"key": "x-ebay-env",
+								"value": "{{x-ebay-env}}",
+								"type": "text"
+							},
+							{
+								"key": "x-grant-type",
+								"value": "refresh_token",
+								"type": "text"
+							},
+							{
+								"key": "x-ebay-refresh-token",
+								"value": "{{x-ebay-refresh-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"availability\": {\n          \"pickupAtLocationAvailability\": [\n            {\n              \"availabilityType\": \"IN_STOCK\",\n              \"fulfillmentTime\": {\n                \"unit\": \"YEAR\",\n                \"value\": \"2020\"\n              },\n              \"merchantLocationKey\": \"IN_STOCK\",\n              \"quantity\": 100\n            }\n          ],\n          \"shipToLocationAvailability\": {\n            \"availabilityDistributions\": [{\n              \"fulfillmentTime\": {\n                \"unit\": \"MONTH\",\n                \"value\": \"11\"\n              },\n              \"merchantLocationKey\": \"IN_STOCK\",\n              \"quantity\": 200\n            }],\n            \"quantity\": 500\n          }\n        },\n        \"packageWeightAndSize\": {\n          \"weight\": {\n            \"value\": 5,\n            \"unit\": \"POUND\"\n          },\n          \"dimensions\": {\n            \"height\": 20,\n            \"length\": 10,\n            \"unit\": \"INCH\",\n            \"width\": 30\n          }\n        },\n        \"condition\": \"NEW\",\n        \"product\": {\n          \"title\": \"TEST-003\",\n          \"description\": \"New GoPro Hero4 Helmet Cam. Unopened box.\",\n          \"aspects\": {\n            \"Brand\": [\n              \"Alias\"\n            ],\n            \"Type\": [\n              \"Helmet/Action\"\n            ],\n            \"Storage Type\": [\n              \"Removable\"\n            ],\n            \"Recording Definition\": [\n              \"High Definition\"\n            ],\n            \"Media Format\": [\n              \"Flash Drive (SSD)\"\n            ],\n            \"Optical Zoom\": [\n              \"10x\"\n            ]\n          },\n          \"brand\": \"GoPro\",\n          \"ean\": [\"ean_001\", \"ean_002\"],\n          \"epid\": \"epid_001\",\n          \"isbn\": [\"isbn_001\", \"isbn_002\"],\n          \"mpn\": \"CHDHX-401\",\n          \"upc\": [\"upc_001\", \"upc_002\"],\n          \"imageUrls\": [\n            \"http://i.ebayimg.com/images/i/182196556219-0-1/s-l1000.jpg\",\n            \"http://i.ebayimg.com/images/i/182196556219-0-1/s-l1001.jpg\",\n            \"http://i.ebayimg.com/images/i/182196556219-0-1/s-l1002.jpg\"\n          ]\n        }\n      }\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4050/ebay/inventory",
+							"host": [
+								"localhost"
+							],
+							"port": "4050",
+							"path": [
+								"ebay",
+								"inventory"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Shopify",
+			"item": [
+				{
+					"name": "Get Product",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "{{content_type}}",
+								"type": "text"
+							},
+							{
+								"key": "x-shopify-access-token",
+								"value": "{{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "store",
+								"value": "{{store}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{cms}}/shopify?ids=4623885697059",
+							"host": [
+								"{{cms}}"
+							],
+							"path": [
+								"shopify"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "fields",
+									"value": "images, status",
+									"disabled": true
+								},
+								{
+									"key": "ids",
+									"value": "4623885697059"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "{{content_type}}",
+								"type": "text"
+							},
+							{
+								"key": "x-shopify-access-token",
+								"value": "{{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "store",
+								"value": "{{store}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"product\": {\n        \"title\": \"Burton Custom Freestyle 151\",\n        \"body_html\": \"Good snowboard!\",\n        \"vendor\": \"TAR\",\n        \"product_type\": \"simple\",\n        \"published_scope\": \"global\",\n        \"tags\": \"Processed, Listed, Bin\",\n        \"status\": \"active\",\n        \"variants\": [\n            {\n                \"price\": \"0.01\",\n                \"compare_at_price\": \"0.02\",\n                \"sku\": \"TAR-NEW-811935020748\",\n                \"barcode\": \"829576475056\",\n                \"inventory_quantity\": 5,\n                \"weight\": 7,\n                \"weight_unit\": \"lb\"\n            }\n        ],\n        \"images\": [\n            {\n                \"src\": \"https://lussoerp.s3.us-west-1.amazonaws.com/2021/5/25/small_wild-fable-womens-denim-cropped-jacket-blue-tie-dye-l_s1ixjS2FzZ.JPG\"\n            }\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{cms}}/shopify",
+							"host": [
+								"{{cms}}"
+							],
+							"path": [
+								"shopify"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "marketplace-jwt",
+			"value": ""
+		},
+		{
+			"key": "marketplace-endpoint",
+			"value": ""
+		},
+		{
+			"key": "x-ebay-client-secret",
+			"value": ""
+		},
+		{
+			"key": "x-ebay-env",
+			"value": ""
+		},
+		{
+			"key": "x-ebay-refresh-token",
+			"value": ""
+		}
+	]
+}
