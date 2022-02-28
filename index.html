@@ -1,33 +1,137 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>API Document Ecommerce Lusso</title>
-    <!-- needed for adaptive design -->
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:300,400,700"
-      rel="stylesheet"
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <title>API Document Ecommerce Lusso</title>
 
-    <!--
-    Redoc doesn't change outer page styles
-    -->
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-      }
-    </style>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <!-- Twitter Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Twitter Bootstrap: Sticky Footer Example -->
+    <link
+      rel="stylesheet"
+      href="https://getbootstrap.com/docs/4.5/examples/sticky-footer-navbar/sticky-footer-navbar.css"
+    />
   </head>
   <body>
-    <!--
-    Redoc element with link to your OpenAPI definition
-    -->
+    <!-- Fixed navbar -->
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarCollapse"
+          aria-controls="navbarCollapse"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">ReDoc</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="/content.html">Pros and Cons</a>
+            </li> -->
+            <li class="nav-item">
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              >
+                Pros and Cons
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div class="row" style="align-items: flex-start">
+          <a
+            class="github-button"
+            href="https://github.com/Redocly/redoc"
+            data-icon="octicon-star"
+            data-size="large"
+            data-show-count="true"
+            aria-label="Star ntkme/github-buttons on GitHub"
+            >Star</a
+          >
+          <a href="https://www.npmjs.com/package/redoc" rel="nofollow"
+            ><img
+              src="https://camo.githubusercontent.com/537681f278d408cc8d00d7cc7498b4d60707db7d2adcef7b4a6defd6c165e3bb/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f646d2f7265646f632e737667"
+              alt="npm"
+              data-canonical-src="https://img.shields.io/npm/dm/redoc.svg"
+              style="max-width: 100%"
+          /></a>
+        </div>
+      </nav>
+    </header>
+
     <redoc spec-url="http://localhost:4444/api-json"></redoc>
-    <!--
-    Link to Redoc JavaScript on CDN for rendering standalone element
-    -->
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Pros and Cons</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <h6><strong>Pros</strong></h6>
+            <ul>
+              <li>Giao diện đẹp, đơn giản, dễ nhìn</li>
+              <li>Open source, configure theme...</li>
+              
+            </ul>
+            <h6><strong>Cons</strong></h6>
+            <ul>
+              <li>Chưa hiện được model (chưa xác định được lý do)</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js"></script>
+    <!-- Development version -->
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Production version
+     <script src="https://unpkg.com/@popperjs/core@2"></script> -->
   </body>
 </html>
