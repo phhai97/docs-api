@@ -77,7 +77,8 @@
       </nav>
     </header>
 
-    <redoc spec-url="http://localhost:4444/api-json"></redoc>
+    <!-- <redoc spec-url="http://localhost:4444/api-json"></redoc> -->
+    <redoc id="redoc-container"></redoc>
 
     <!-- Modal -->
     <div
@@ -103,11 +104,10 @@
             <ul>
               <li>Giao diện đẹp, đơn giản, dễ nhìn</li>
               <li>Open source, configure theme...</li>
-              
             </ul>
             <h6><strong>Cons</strong></h6>
             <ul>
-              <li>Chưa hiện được model (chưa xác định được lý do)</li>
+             
             </ul>
           </div>
           <div class="modal-footer">
@@ -133,5 +133,154 @@
     ></script>
     <!-- Production version
      <script src="https://unpkg.com/@popperjs/core@2"></script> -->
+
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script>
+       $(document).ready(function () {
+         let docEl = document.getElementById("docs");
+         $.ajax({
+           type: "GET",
+           crossDomain: true,
+           dataType: "text",
+           async: true,
+           headers: {
+             "Access-Control-Allow-Origin": "*",
+             contentType: "application/json",
+           },
+           url: "http://localhost:4444/api-json",
+           success: function (jsondata) {
+             let data = JSON.parse(jsondata);
+             data["tags"] = [
+               ...data["tags"],
+               {
+                 name: "config_model",
+                 "x-displayName": "config",
+                 description:
+                   '<SchemaDefinition schemaRef="#/components/schemas/Config" exampleRef="#/components/examples/Config" showReadOnly={true} showWriteOnly={true} />\n',
+               },
+               {
+                 name: "metaData_model",
+                 "x-displayName": "meta_data",
+                 description:
+                   '<SchemaDefinition schemaRef="#/components/schemas/MetaData" exampleRef="#/components/examples/MetaData" showReadOnly={true} showWriteOnly={true} />\n',
+               },
+               {
+                 name: "baseListResponse_model",
+                 "x-displayName": "base_list_response",
+                 description:
+                   '<SchemaDefinition schemaRef="#/components/schemas/BaseListResponse" exampleRef="#/components/examples/BaseListResponse" showReadOnly={true} showWriteOnly={true} />\n',
+               },
+               {
+                 name: "brand_model",
+                 "x-displayName": "brand",
+                 description:
+                   '<SchemaDefinition schemaRef="#/components/schemas/Brand" exampleRef="#/components/examples/Brand" showReadOnly={true} showWriteOnly={true} />\n',
+               },
+               {
+                 name: "createBrandDto_model",
+                 "x-displayName": "create_brand",
+                 description:
+                   '<SchemaDefinition schemaRef="#/components/schemas/CreateBrandDto" exampleRef="#/components/examples/CreateBrandDto" showReadOnly={true} showWriteOnly={true} />\n',
+               },
+               {
+                 name: "sectionGroup_model",
+                 "x-displayName": "section_group",
+                 description:
+                   '<SchemaDefinition schemaRef="#/components/schemas/SectionGroup" exampleRef="#/components/examples/SectionGroup" showReadOnly={true} showWriteOnly={true} />\n',
+               },
+               {
+                 name: "create_section_groupDto_model",
+                 "x-displayName": "create_section_group",
+                 description:
+                   '<SchemaDefinition schemaRef="#/components/schemas/CreateSectionGroupDto" exampleRef="#/components/examples/CreateSectionGroupDto" showReadOnly={true} showWriteOnly={true} />\n',
+               },
+               {
+                 name: "sectionGroup_model",
+                 "x-displayName": "section_group",
+                 description:
+                   '<SchemaDefinition schemaRef="#/components/schemas/SectionGroup" exampleRef="#/components/examples/SectionGroup" showReadOnly={true} showWriteOnly={true} />\n',
+               },
+               {
+                 name: "section_model",
+                 "x-displayName": "section",
+                 description:
+                   '<SchemaDefinition schemaRef="#/components/schemas/Section" exampleRef="#/components/examples/Section" showReadOnly={true} showWriteOnly={true} />\n',
+               },
+               {
+                 name: "create_section_dto_model",
+                 "x-displayName": "create_section_group",
+                 description:
+                   '<SchemaDefinition schemaRef="#/components/schemas/CreateSectionDto" exampleRef="#/components/examples/CreateSectionDto" showReadOnly={true} showWriteOnly={true} />\n',
+               },
+               {
+                 name: "product_model",
+                 "x-displayName": "product",
+                 description:
+                   '<SchemaDefinition schemaRef="#/components/schemas/Product" exampleRef="#/components/examples/Product" showReadOnly={true} showWriteOnly={true} />\n',
+               },
+               {
+                 name: "File_model",
+                 "x-displayName": "file",
+                 description:
+                   '<SchemaDefinition schemaRef="#/components/schemas/File" exampleRef="#/components/examples/File" showReadOnly={true} showWriteOnly={true} />\n',
+               },
+               {
+                 name: "Introduction",
+                 description:
+                   "This API is documented in OpenAPI format and is based on Petstore sample provided by swagger.io team. It was extended to illustrate features of generator-openapi-repo tool and ReDoc documentation. In addition to standard OpenAPI syntax we use a few vendor extensions.",
+               },
+               {
+                 name: "Authentication",
+                 description:
+                   "This API is documented in OpenAPI format and is based on Petstore sample provided by swagger.io team. It was extended to illustrate features of generator-openapi-repo tool and ReDoc documentation. In addition to standard OpenAPI syntax we use a few vendor extensions.",
+               },
+             ];
+            //  data["info"] = {
+            //    ...data["info"],
+            //    "x-logo": {
+            //      url: "https://admin.bolsadeal.com/themes/images/lusso-white-01.png",
+            //      backgroundColor: "#343a40",
+            //      altText: "logo",
+            //    },
+            //  };
+             data["x-tagGroups"] = [
+               {
+                 name: "GETTINGS STARTED",
+                 tags: ["Introduction", "Authentication"],
+               },
+               {
+                 name: "General",
+                 tags: [
+                   "test",
+                   "config",
+                   "brands",
+                   "sections",
+                   "products",
+                   "files",
+                   "admins",
+                 ],
+               },
+               {
+                 name: "Model",
+                 tags: [
+                   "config_model",
+                   "metaData_model",
+                   "baseListResponse_model",
+                   "brand_model",
+                   "createBrandDto_model",
+                   "sectionGroup_model",
+                   "create_section_groupDto_model",
+                   "section_model",
+                   "create_section_dto_model",
+                   "product_model",
+                   "File_model",
+                 ],
+               },
+             ];
+             Redoc.init(data, {}, document.getElementById("redoc-container"));
+           },
+         });
+       });
+     </script>
   </body>
 </html>
